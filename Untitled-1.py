@@ -1,9 +1,11 @@
 #global variables, lists and dictionaries -------
-foods = [["Chips", 3.99, True], ["Salad", 4.49, True], ["Chicken", 5.99, False], ["Pie", 8.99, False], 
-         ["Vegan pie", 8.49, True], ["Fruits", 4.99, True], ["Burger", 10.49, False], ["Fish", 6.49, False],
-         ["Sausage roll", 8.99, False], ["Stir fry", 12.99, False],  ["Noodles", 4.49, False], ["Pizza", 10.99, False]]
+loop = False
+foods = {"chips": [3.99, True], "salad": [4.49, True], "chicken": [5.99, False], "pie": [8.99, False], 
+         "vegan pie": [8.49, True], "fruits": [4.99, True], "burger": [10.49, False], "fish": [6.49, False],
+         "sausage roll": [8.99, False], "stir fry veggies": [12.99, True],  "noodles": [4.49, False], "pizza": [10.99, False],
+         "bacon bits": [7.99, False], "garlic bread": [3.49, True]}
 
-# combo = ["Fish and chips", "Fruit salad", "Stir fry with chicken", "Pizza pie"]
+# combo ideas: Chips + chicken, chips + fish, salad + fruits, pie + sausage roll, vegan pie + stir fry veggies, fruits + fish, stir fry veggies + noodles, stir fry veggies + bacon bits, burger + burger
 
 #functions
 def validify_int_input(prompt, invalid):
@@ -13,14 +15,37 @@ def validify_int_input(prompt, invalid):
         except ValueError:
             print(invalid)
 
-def menu(order):
-    print("money")
+def menu(paid):
+    
+    print("Here is the list of items that you can order. ")
+    loop = True
+    order = []
+    cost = 0.0
+    print(order)
+    print(cost)
+    for food in foods.keys():
+        print(food)
+    while loop == True:
+        choice = input("Please order them indivisually. Enter X or cancel to cancel, and P or pay to pay for your meal.").lower
+        if choice == foods.keys():
+            order.append(choice) #needs fix
+            cost += foods[order][0] 
+            print(order)
+            print(cost)
+        elif choice == "X" or choice == "Cancel":
+            loop = False
+        elif choice == "P" or choice == "Pay":
+            loop = False
+        else:
+            print("Invalid; that choice is not available or is not a valid input")
+        
 
 def main():
-    order = {}
+    paid = {}
     
     task = validify_int_input("What do you want to do? \n1. Order from menu | 2. View my order", "Invalid; please use numbers")
     if task == 1:
-        menu(order)
+        menu(paid)
     else:print("Invalid; please use the appropriate numbers")
 
+main()
