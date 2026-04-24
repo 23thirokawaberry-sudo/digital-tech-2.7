@@ -14,36 +14,58 @@ def validify_int_input(prompt, invalid):
             return int(input(prompt))
         except ValueError:
             print(invalid)
+"""Validifies intergers"""
+
+def get_cost(food):
+    if food in foods:
+        return foods[food][0]
+"""Gets the price of selected food"""
+
+def vegan_option(food):
+    if foods[food][1] == True:
+        return "Vegan"
+    else:
+        return "No"
+"""Checks if the food has a vegan option/is vegan"""
+
+
+def payment(paid):
+    if paid:
+        buy
+"""Payment"""
 
 def menu(paid):
     
     print("Here is the list of items that you can order. ")
+    cart = []
     loop = True
-    order = []
-    cost = 0.0
-    print(order)
-    print(cost)
+    newline = 0
     for food in foods.keys():
-        print(food)
+        if newline == 5:
+            print(food)
+            newline = 0
+        
+        else:
+            print(food, end=", ")#fix this later
+            newline += 1
+    """prints all available food types"""
+    
     while loop == True:
-        choice = input("Please order them indivisually. Enter X or cancel to cancel, and P or pay to pay for your meal.").lower
-        if choice == foods.keys():
-            order.append(choice) #needs fix
-            cost += foods[order][0] 
-            print(order)
-            print(cost)
+        choice = input("Please order them indivisually. Enter X or cancel to cancel, and P or pay to pay for your meal.").lower()
+        if get_cost(choice):
+            print(choice)
         elif choice == "X" or choice == "Cancel":
             loop = False
         elif choice == "P" or choice == "Pay":
             loop = False
         else:
             print("Invalid; that choice is not available or is not a valid input")
-        
+"""Single menu"""
 
 def main():
     paid = {}
     
-    task = validify_int_input("What do you want to do? \n1. Order from menu | 2. View my order", "Invalid; please use numbers")
+    task = validify_int_input("What do you want to do? \n1. Browse combos | 2. View my order", "Invalid; please use numbers")
     if task == 1:
         menu(paid)
     else:print("Invalid; please use the appropriate numbers")
