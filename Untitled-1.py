@@ -55,7 +55,14 @@ def menu(cart):
             print("Invalid; that choice is not available or is not a valid input")
 
 def view(cart):
-    print('temp')
+    newline = 0
+    for item in cart:
+        if newline == 8:
+            print(item)
+            newline = 0
+        else:
+            print(item, end=", ")#fix this later
+            newline += 1
 
 def payment(cart):
     """Payment"""
@@ -77,5 +84,6 @@ def main():
         elif task == 3:
             payment(cart)
         else:print("Invalid; please use the appropriate numbers")
+        print(cart)
 
 main()
