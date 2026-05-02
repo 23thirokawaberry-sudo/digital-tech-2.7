@@ -64,25 +64,40 @@ def view(cart):
             print(item, end=", ")#fix this later
             newline += 1
 
-def payment(cart):
+def payment(cart, main_loop_toggle):
     """Payment"""
     total_Cost = 0
     for items in cart:
-        print(f"Cost for {items} is {get_cost(items)}")
         total_Cost += get_cost(items)
-    print(f"Total cost is {total_Cost}")
+        total_Cost = round(total_Cost, 2)
+    if len(cart) > 10: #fix this
+        total_Cost = total_Cost * 0.8
+        print("Discounted")
+    elif len(cart) > 5:
+        total_Cost = total_Cost * 0.9
+        print("Discounted")
+    print(f"{len(cart)} items are in the cart and the total cost is {total_Cost} with discounts applied.")
+    print(f"You can get a 10% discount for ordering more than 5 items, and a 20% discount for ordering more than 10 items.")
+    payment_process = validify_int_input("Do you want to pay and finish (type 1) or return (type any other number)", "Invalid; please use numbers")
+
+    if payment_process == 1:
+        print("Paid successfully!")
+        main_loop_toggle == False #fix this
+
+
+        
 
 def main():
     cart = []
-    
-    while True:
+    shopping = True
+    while shopping == True:
         task = validify_int_input("What do you want to do? \n1. Browse menu | 2. View my order | 3. Proceed to payment", "Invalid; please use numbers")
         if task == 1:
             menu(cart)
         elif task == 2:
             view(cart)
         elif task == 3:
-            payment(cart)
+            payment(cart, shopping)
         else:print("Invalid; please use the appropriate numbers")
         print(cart)
 
