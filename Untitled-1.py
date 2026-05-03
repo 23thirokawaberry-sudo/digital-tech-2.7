@@ -71,7 +71,7 @@ def view(cart):
 
     loop = True
     while loop == True:
-        item = input("If you want to remove an item, then enter the name of the item. Otherwise enter x, end, cancel, finish or done. \n")
+        item = input("If you want to remove an item, then enter the name of the item. Otherwise enter x, end, cancel, finish or done. \n").lower()
         if item in cart:
             cart.remove(item)
         elif item in EXIT:
