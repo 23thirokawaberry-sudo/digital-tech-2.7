@@ -34,7 +34,7 @@ def get_order_scale(cart):
 
 def menu(cart):
     """Shows foods and lets user order."""
-    new_line = 0 # used for counting number of prints before a new line is created
+    new_line = 0  # used for counting number of prints before a new line is created
     print("Here is the list of items that you can order. ")
     for food, details in FOODS.items():
         if new_line == 5:
@@ -43,7 +43,7 @@ def menu(cart):
         else:
             print(f"{food} -- ${details[0]}", end=" | ")
             new_line += 1
-    print("") # stops the next print from merging with the previous print statement
+    print("")  # stops the next print from merging with the previous print statement
 
     loop = True
     while loop == True:
@@ -59,7 +59,7 @@ def menu(cart):
 
 def view(cart):
     """View and remove items from cart"""
-    new_line = 0 #same as line 37
+    new_line = 0  # same as line 37
     for item in cart:
         if new_line == 8:
             print(item)
@@ -67,7 +67,7 @@ def view(cart):
         else:
             print(item, end=", ")
             new_line += 1
-    print("") # same as line 46
+    print("")  # same as line 46
 
     loop = True
     while loop == True:
