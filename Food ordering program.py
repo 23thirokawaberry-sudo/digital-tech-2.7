@@ -29,7 +29,7 @@ def get_order_scale(cart):
     scale = 0
     for item in cart:
         if item in FOODS:
-            scale += FOODS[FOODS][1]
+            scale += FOODS[item][1]
     return scale
 
 
